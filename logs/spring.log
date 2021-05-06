@@ -1,0 +1,128 @@
+2021-05-06 09:00:44.671  INFO 15888 --- [restartedMain] com.example.moneyball.ui.UIApplication   : Starting UIApplication using Java 15.0.1 on DESKTOP-2RC8FA4 with PID 15888 (D:\sts-4.9.0.RELEASE\workspace\SpringBootWeb\bin\main started by LSJ in D:\sts-4.9.0.RELEASE\workspace\SpringBootWeb)
+2021-05-06 09:00:44.674  INFO 15888 --- [restartedMain] com.example.moneyball.ui.UIApplication   : The following profiles are active: local
+2021-05-06 09:00:44.708  WARN 15888 --- [restartedMain] o.s.b.c.config.ConfigDataEnvironment     : Property 'spring.profiles' imported from location 'class path resource [application.yml]' is invalid and should be replaced with 'spring.config.activate.on-profile' [origin: class path resource [application.yml] - 18:13]
+2021-05-06 09:00:44.708  WARN 15888 --- [restartedMain] o.s.b.c.config.ConfigDataEnvironment     : Property 'spring.profiles' imported from location 'class path resource [application.yml]' is invalid and should be replaced with 'spring.config.activate.on-profile' [origin: class path resource [application.yml] - 10:13]
+2021-05-06 09:00:44.710  INFO 15888 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-05-06 09:00:44.710  INFO 15888 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-05-06 09:00:45.342  INFO 15888 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 12211 (http)
+2021-05-06 09:00:45.350  INFO 15888 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-05-06 09:00:45.350  INFO 15888 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.45]
+2021-05-06 09:00:45.477  INFO 15888 --- [restartedMain] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2021-05-06 09:00:45.488  INFO 15888 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/ui]     : Initializing Spring embedded WebApplicationContext
+2021-05-06 09:00:45.490  INFO 15888 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 780 ms
+2021-05-06 09:00:45.630  INFO 15888 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-05-06 09:00:45.702  INFO 15888 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
+2021-05-06 09:00:45.783  INFO 15888 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2021-05-06 09:00:45.815  INFO 15888 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 12211 (http) with context path '/ui'
+2021-05-06 09:00:45.821  INFO 15888 --- [restartedMain] com.example.moneyball.ui.UIApplication   : Started UIApplication in 1.426 seconds (JVM running for 2.038)
+2021-05-06 09:01:21.341  INFO 15888 --- [http-nio-12211-exec-2] o.apache.coyote.http11.Http11Processor   : Error parsing HTTP request header
+ Note: further occurrences of HTTP request parsing errors will be logged at DEBUG level.
+
+java.lang.IllegalArgumentException: Invalid character found in method name [0x160x030x010x020x000x010x000x010xfc0x030x030x12Xk0x01;p@0x9dQ80xeb0xaa0x100x850xffj0xc8p0xb2]r0xfe*-0xc0M0x17Q0xb5_0x8cj]. HTTP method names must be tokens
+	at org.apache.coyote.http11.Http11InputBuffer.parseRequestLine(Http11InputBuffer.java:417) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:261) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1707) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630) ~[na:na]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at java.base/java.lang.Thread.run(Thread.java:832) ~[na:na]
+
+2021-05-06 09:01:21.341  INFO 15888 --- [http-nio-12211-exec-1] o.apache.coyote.http11.Http11Processor   : Error parsing HTTP request header
+ Note: further occurrences of HTTP request parsing errors will be logged at DEBUG level.
+
+java.lang.IllegalArgumentException: Invalid character found in method name [0x160x030x010x020x000x010x000x010xfc0x030x030xc40xecw0xcaD0xfe0x1d0x7f0x100x990xdb0xda0x880x8a0xe5i0x02Ak0xe40xefjT0x9bZ0xc10xb4l?0xd50x050x0c]. HTTP method names must be tokens
+	at org.apache.coyote.http11.Http11InputBuffer.parseRequestLine(Http11InputBuffer.java:417) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:261) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1707) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630) ~[na:na]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at java.base/java.lang.Thread.run(Thread.java:832) ~[na:na]
+
+2021-05-06 09:02:14.183  INFO 15888 --- [http-nio-12211-exec-8] o.a.c.c.C.[Tomcat].[localhost].[/ui]     : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-05-06 09:02:14.183  INFO 15888 --- [http-nio-12211-exec-8] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-05-06 09:02:14.184  INFO 15888 --- [http-nio-12211-exec-8] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2021-05-06 09:05:00.244  INFO 15888 --- [Thread-5] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-05-06 09:05:00.290  INFO 15888 --- [restartedMain] com.example.moneyball.ui.UIApplication   : Starting UIApplication using Java 15.0.1 on DESKTOP-2RC8FA4 with PID 15888 (D:\sts-4.9.0.RELEASE\workspace\SpringBootWeb\bin\main started by LSJ in D:\sts-4.9.0.RELEASE\workspace\SpringBootWeb)
+2021-05-06 09:05:00.291  INFO 15888 --- [restartedMain] com.example.moneyball.ui.UIApplication   : The following profiles are active: local
+2021-05-06 09:05:00.292  WARN 15888 --- [restartedMain] o.s.b.c.config.ConfigDataEnvironment     : Property 'spring.profiles' imported from location 'class path resource [application.yml]' is invalid and should be replaced with 'spring.config.activate.on-profile' [origin: class path resource [application.yml] - 19:13]
+2021-05-06 09:05:00.292  WARN 15888 --- [restartedMain] o.s.b.c.config.ConfigDataEnvironment     : Property 'spring.profiles' imported from location 'class path resource [application.yml]' is invalid and should be replaced with 'spring.config.activate.on-profile' [origin: class path resource [application.yml] - 11:13]
+2021-05-06 09:05:00.397  INFO 15888 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 12211 (http)
+2021-05-06 09:05:00.398  INFO 15888 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-05-06 09:05:00.399  INFO 15888 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.45]
+2021-05-06 09:05:00.433  INFO 15888 --- [restartedMain] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2021-05-06 09:05:00.434  INFO 15888 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/ui]     : Initializing Spring embedded WebApplicationContext
+2021-05-06 09:05:00.434  INFO 15888 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 142 ms
+2021-05-06 09:05:00.463  INFO 15888 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-05-06 09:05:00.469  INFO 15888 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
+2021-05-06 09:05:00.482  INFO 15888 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2021-05-06 09:05:00.490  INFO 15888 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 12211 (http) with context path '/ui'
+2021-05-06 09:05:00.493  INFO 15888 --- [restartedMain] com.example.moneyball.ui.UIApplication   : Started UIApplication in 0.223 seconds (JVM running for 256.71)
+2021-05-06 09:05:00.496  INFO 15888 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2021-05-06 09:05:11.443  INFO 15888 --- [http-nio-127.0.0.1-12211-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/ui]     : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-05-06 09:05:11.443  INFO 15888 --- [http-nio-127.0.0.1-12211-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-05-06 09:05:11.444  INFO 15888 --- [http-nio-127.0.0.1-12211-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2021-05-06 09:05:37.047  INFO 15888 --- [Thread-8] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-05-06 09:05:37.128  INFO 15888 --- [restartedMain] com.example.moneyball.ui.UIApplication   : Starting UIApplication using Java 15.0.1 on DESKTOP-2RC8FA4 with PID 15888 (D:\sts-4.9.0.RELEASE\workspace\SpringBootWeb\bin\main started by LSJ in D:\sts-4.9.0.RELEASE\workspace\SpringBootWeb)
+2021-05-06 09:05:37.128  INFO 15888 --- [restartedMain] com.example.moneyball.ui.UIApplication   : The following profiles are active: local
+2021-05-06 09:05:37.131  WARN 15888 --- [restartedMain] o.s.b.c.config.ConfigDataEnvironment     : Property 'spring.profiles' imported from location 'class path resource [application.yml]' is invalid and should be replaced with 'spring.config.activate.on-profile' [origin: class path resource [application.yml] - 18:13]
+2021-05-06 09:05:37.131  WARN 15888 --- [restartedMain] o.s.b.c.config.ConfigDataEnvironment     : Property 'spring.profiles' imported from location 'class path resource [application.yml]' is invalid and should be replaced with 'spring.config.activate.on-profile' [origin: class path resource [application.yml] - 10:13]
+2021-05-06 09:05:37.227  INFO 15888 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 12211 (http)
+2021-05-06 09:05:37.228  INFO 15888 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-05-06 09:05:37.228  INFO 15888 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.45]
+2021-05-06 09:05:37.257  INFO 15888 --- [restartedMain] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2021-05-06 09:05:37.257  INFO 15888 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/ui]     : Initializing Spring embedded WebApplicationContext
+2021-05-06 09:05:37.257  INFO 15888 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 126 ms
+2021-05-06 09:05:37.285  INFO 15888 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-05-06 09:05:37.291  INFO 15888 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
+2021-05-06 09:05:37.304  INFO 15888 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2021-05-06 09:05:37.310  INFO 15888 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 12211 (http) with context path '/ui'
+2021-05-06 09:05:37.314  INFO 15888 --- [restartedMain] com.example.moneyball.ui.UIApplication   : Started UIApplication in 0.211 seconds (JVM running for 293.531)
+2021-05-06 09:05:37.315  INFO 15888 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2021-05-06 09:05:59.240  INFO 15888 --- [Thread-13] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-05-06 09:05:59.296  INFO 15888 --- [restartedMain] com.example.moneyball.ui.UIApplication   : Starting UIApplication using Java 15.0.1 on DESKTOP-2RC8FA4 with PID 15888 (D:\sts-4.9.0.RELEASE\workspace\SpringBootWeb\bin\main started by LSJ in D:\sts-4.9.0.RELEASE\workspace\SpringBootWeb)
+2021-05-06 09:05:59.296  INFO 15888 --- [restartedMain] com.example.moneyball.ui.UIApplication   : The following profiles are active: local
+2021-05-06 09:05:59.297  WARN 15888 --- [restartedMain] o.s.b.c.config.ConfigDataEnvironment     : Property 'spring.profiles' imported from location 'class path resource [application.yml]' is invalid and should be replaced with 'spring.config.activate.on-profile' [origin: class path resource [application.yml] - 19:13]
+2021-05-06 09:05:59.297  WARN 15888 --- [restartedMain] o.s.b.c.config.ConfigDataEnvironment     : Property 'spring.profiles' imported from location 'class path resource [application.yml]' is invalid and should be replaced with 'spring.config.activate.on-profile' [origin: class path resource [application.yml] - 11:13]
+2021-05-06 09:05:59.390  INFO 15888 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 12211 (http)
+2021-05-06 09:05:59.391  INFO 15888 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-05-06 09:05:59.391  INFO 15888 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.45]
+2021-05-06 09:05:59.420  INFO 15888 --- [restartedMain] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2021-05-06 09:05:59.420  INFO 15888 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/ui]     : Initializing Spring embedded WebApplicationContext
+2021-05-06 09:05:59.420  INFO 15888 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 122 ms
+2021-05-06 09:05:59.441  INFO 15888 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-05-06 09:05:59.447  INFO 15888 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
+2021-05-06 09:05:59.459  INFO 15888 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2021-05-06 09:05:59.466  INFO 15888 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 12211 (http) with context path '/ui'
+2021-05-06 09:05:59.470  INFO 15888 --- [restartedMain] com.example.moneyball.ui.UIApplication   : Started UIApplication in 0.194 seconds (JVM running for 315.687)
+2021-05-06 09:05:59.472  INFO 15888 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2021-05-06 09:06:04.740  INFO 15888 --- [http-nio-127.0.0.1-12211-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/ui]     : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-05-06 09:06:04.741  INFO 15888 --- [http-nio-127.0.0.1-12211-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-05-06 09:06:04.742  INFO 15888 --- [http-nio-127.0.0.1-12211-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2021-05-06 09:32:28.899  INFO 15888 --- [Thread-18] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-05-06 09:32:28.977  INFO 15888 --- [restartedMain] com.example.moneyball.ui.UIApplication   : Starting UIApplication using Java 15.0.1 on DESKTOP-2RC8FA4 with PID 15888 (D:\sts-4.9.0.RELEASE\workspace\SpringBootWeb\bin\main started by LSJ in D:\sts-4.9.0.RELEASE\workspace\SpringBootWeb)
+2021-05-06 09:32:28.977  INFO 15888 --- [restartedMain] com.example.moneyball.ui.UIApplication   : The following profiles are active: local
+2021-05-06 09:32:28.978  WARN 15888 --- [restartedMain] o.s.b.c.config.ConfigDataEnvironment     : Property 'spring.profiles' imported from location 'class path resource [application.yml]' is invalid and should be replaced with 'spring.config.activate.on-profile' [origin: class path resource [application.yml] - 19:13]
+2021-05-06 09:32:28.978  WARN 15888 --- [restartedMain] o.s.b.c.config.ConfigDataEnvironment     : Property 'spring.profiles' imported from location 'class path resource [application.yml]' is invalid and should be replaced with 'spring.config.activate.on-profile' [origin: class path resource [application.yml] - 11:13]
+2021-05-06 09:32:29.058  INFO 15888 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 12211 (http)
+2021-05-06 09:32:29.059  INFO 15888 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-05-06 09:32:29.059  INFO 15888 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.45]
+2021-05-06 09:32:29.087  INFO 15888 --- [restartedMain] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2021-05-06 09:32:29.087  INFO 15888 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/ui]     : Initializing Spring embedded WebApplicationContext
+2021-05-06 09:32:29.088  INFO 15888 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 110 ms
+2021-05-06 09:32:29.112  INFO 15888 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-05-06 09:32:29.118  INFO 15888 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
+2021-05-06 09:32:29.128  INFO 15888 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2021-05-06 09:32:29.134  INFO 15888 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 12211 (http) with context path '/ui'
+2021-05-06 09:32:29.138  INFO 15888 --- [restartedMain] com.example.moneyball.ui.UIApplication   : Started UIApplication in 0.182 seconds (JVM running for 1905.355)
+2021-05-06 09:32:29.139  INFO 15888 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2021-05-06 09:32:33.085  INFO 15888 --- [http-nio-127.0.0.1-12211-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/ui]     : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-05-06 09:32:33.085  INFO 15888 --- [http-nio-127.0.0.1-12211-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-05-06 09:32:33.087  INFO 15888 --- [http-nio-127.0.0.1-12211-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2021-05-06 09:32:50.644  INFO 15888 --- [Thread-23] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'

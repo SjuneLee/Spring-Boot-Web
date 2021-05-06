@@ -1,0 +1,18 @@
+# injected by ansible deployment script
+server.port: ${running.port:12211}
+server.address: 127.0.0.1
+logging.file.path: ${application.log.path:./logs}
+spring:  profiles:    active: local
+---
+spring:  profiles: local
+
+server:  servlet:
+    context-path: "/ui"
+
+---
+spring:
+  profiles: dev
+
+server:
+  servlet:
+    context-path: "/ui"
