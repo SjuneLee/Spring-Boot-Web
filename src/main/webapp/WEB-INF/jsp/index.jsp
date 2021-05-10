@@ -37,6 +37,35 @@
             var _cRoot = '<%=cRoot%>';
             var config = <%=configData%>;
             console.log(config);
+            
+            function button_onclick() {
+                comLib.gfn_executeSubmissionEdi(SBM_SERCH_FAQ1111);
+            }
+            
+//            gfn_executeSubmissionEdi = function(__opt) {
+//            var opt = JSON.parse(JSON.stringify(__opt));
+//            alert(opt);
+//            console.log(opt);
+//            }
+            
+            SBM_SERCH_FAQ1111 = {
+                'before' : function() {
+                    alert("비포");
+                },
+                'process_msg' : "조회중입니다....",
+                'paging' : "",
+                'paging_button' : "",
+                'action' :{'server': 'edw_is_server', 'url': '/bs/bsgo9900/pbsq0002'},
+                'in_data':"",
+                'out_data':"",
+                'callback': function(e) {
+                    //scwin.fn_request_callback('FAQ3281_cb', e);
+                }
+            }
         </script>
+        <script type="text/javascript" src="./js/comLib.js"></script>
     </head>
+    <body>
+    <button name="button" onclick="button_onclick();">눌러보세요</button>
+    </body>
 </html>
