@@ -53,11 +53,11 @@
                     alert("비포");
                 },
                 'process_msg' : "조회중입니다....",
-                'paging' : "",
+                'paging' : {'page_type': 'N', 'grid_id': 'grd1', 'page_size': '30'},
                 'paging_button' : "",
                 'action' :{'server': 'edw_is_server', 'url': '/bs/bsgo9900/pbsq0002'},
-                'in_data':"",
-                'out_data':"",
+                'in_data':'map=FAQ1000_inMap',
+                'out_data':'FAQ1000_outList=list|append',
                 'callback': function(e) {
                     //scwin.fn_request_callback('FAQ3281_cb', e);
                 }

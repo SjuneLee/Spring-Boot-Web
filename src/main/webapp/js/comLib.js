@@ -168,6 +168,266 @@ var comLib = {
             //    ediJson.common_header.th_scr_no = config.ex_th_scr_no[opt.action.url];
             //}
             
+            // 필수입력값 체크
+            //if (typeof opt.required != "undefined" && opt.required != "") {
+            //    
+            //}
+            
+            //헤더셋팅
+            if(opt.header != null) {
+                var arr = Object.keys(opt.header);
+                for(var i=0;i<arr.length;i++) {
+                    ediJson.common_header[arr[i]] = opt.header[arr[i]];
+                }
+            }
+            //auto Paging처리
+            if(typeof opt.paging != "undefined") {
+                if(opt.paging != null && opt.paging.page_type != null && opt.paging.page_type.toUpperCase() == 'N') {
+                    ediJson.common_header.ui_option["record_count_per_page"] = opt.paging.page_size;
+                    ediJson.common_header.th_cont_tr_tcd = '1';//처음호출은1, 이후는 3
+                    ediJson.common_header.th_qry_c = ediJson.common_header.ui_option["record_count_per_page"];
+                } else if (opt.paging != null && opt.paging.page_type != null && opt.paging.page_type.toUpperCase() =='S') {
+                    if(typeof opt.paging.grid_id != "undefined"){
+                        comLib.pagingOpt = opt;
+                        //var grdObj = this.$p.getComponentById(opt.paing.grid_id);
+                        grdObj.setAttribute("cont_trkey",[]);
+                        var strDataList = grdObj.getDataList();
+                        //var grdDataList = $p.getComponentById(strDataList);
+                        if(grdDataList == null){
+                            alert('그리드에 바인딩된 dataList가 존재하지 않습니다1. id: '+strDataList);
+                        }else{
+                            grdDataList.reset();
+                        }
+                        if(typeof grdObj != "undefined"){
+                            var checkOverlap = false;
+                            
+                            var tmpCallback = function(e){
+                                setTimeout(function(){
+                                    checkOverlap = false;
+                                }, 500);
+                                
+                                if (checkOverlap == true) {
+                                    return;
+                                }
+                                
+                                checkOverlap = true;
+                                var totalCount = grObj.getAttribute("totalCount");
+                                var strDataList = grdObj.getDataList();
+                                //var grdDataList = $p.getComponentById(strDataList);
+                                
+                                var numCurRowCnt = grdDataList.getRowCount();
+                                var numCurTotCnt = totalCount;
+                                var th_cont_tr_tcd = grdObj.getAttribute("th_cont_tr_tcd");
+                                if(th_cont_tr_tcd != '4' && th_cont_tr_tcd != '5') {
+                                    // +1로 다음 페이지 지정
+                                    var strCurPage = Math.ceil(numCurRowCnt/comLib.pagingOpt.paging.page_size)+1;
+                                    ediJson.common_header.ui_opion["page_no"] = strCurPage;
+                                    // cont_trkey 연속거래키
+                                    ediJson.common_header.ui_option["record_count_per_page"] = comLib.pagingOpt.paging.page_size;
+                                    ediJson.common_header.th_qry_c = ediJson.common_header.ui_option["record_count_per_page"];
+                                    ediJson.common_header.th_cont_tr_tcd = '3';//처음호출은 0, 이후는 3
+                                    ediJson.common_header.cont_trkey = grdObj.getAttribute("cont_trkey");
+                                    ediJson.common_header.guid = "CUI"+comLib.gfn_getSysemDate("yyyyMMddHHmmssSSS")+comLib.shuffleRandom(6);
+                                    ediJson.common_header.ui_option.process_msg = opt.process_msg;
+                                    ediJson.common_header.ui_option["out_data"] = opt.out_data+"|append";
+                                    // 기존 submission 호출
+                                    //comLib._executeSubmission(ediJson);
+                                }
+                            }
+                            
+                            ediJson.common_header.ui_option["page_no"] = 1;
+                            ediJson.common_header.ui_option["record_count_per_page"] = comLib.pagingOpt.paging.page_size;
+                            ediJson.common_header.th_cont_tr_tcd = '1';//처음호출은1, 이후는 3
+                            ediJson.common_header.th_qry_c = ediJson.common_header.ui_option["record_count_per_page"] = comLib.pagingOpt.paging.page_size;
+                            ediJson.common_header.cont_trkey = grdObj.getAttribute("cont_trKey");
+                            
+                            // 그리드뷰 이벤트 생성
+                            grdObj.unbind("onscrollend");
+                            grdObj.bind("onscrollend" , tmpCallBack );
+                            
+                            if(typeof opt.paging_button != "undefined") {
+                                if(typeof opt.paging_button.btn_search_continue != "undefined") {
+                                    //var btn_continue = this.$p.getComponentById(opt.paging_button.btn_search_continue);
+                                    var btn_next;
+                                    var btn_break;
+                                    var ediJson2 = ediJson;
+                                    
+                                    if(typeof opt.paging_button.bn_search_next != "undefined") {
+                                        //btn_next = this.$p.getComponentById(opt.paging_button.btn_search_next);
+                                    }
+                                    if(typeof opt.paging_button.bn_search_break != "undefined") {
+                                        //btn_break = this.$p.getComponentById(opt.paging_button.btn_search_break);
+                                    }
+                                    
+                                    if(typeof btn_continue != "undefined") {
+                                        var tmpCallBack2 = function(e){
+                                            
+                                            btn_continue.setDisabled(true);
+                                            
+                                            if(typeof btn_next != "undefined") {
+                                                btn_next.setDisabled(true);
+                                            }
+                                            if(typeof btn_break != "undefined") {
+                                                btn_break.setDisabled(false);
+                                            }
+                                            
+                                        var totalCount = grObj.getAttribute("totalCount");
+                                        var strDataList = grdObj.getDataList();
+                                        //var grdDataList = $p.getComponentById(strDataList);
+                                        
+                                        var numCurRowCnt = grdDataList.getRowCount();
+                                        var numCurTotCnt = totalCount;
+                                        var th_cont_tr_tcd = grdObj.getAttribute("th_cont_tr_tcd");
+                                        if(th_cont_tr_tcd != '4' && th_cont_tr_tcd != '5') {
+                                            // +1로 다음 페이지 지정
+                                            var strCurPage = Math.ceil(numCurRowCnt/comLib.pagingOpt.paging.page_size)+1;
+                                            ediJson2.common_header.ui_opion["page_no"] = strCurPage;
+                                            // cont_trkey 연속거래키
+                                            ediJson2.common_header.ui_option["record_count_per_page"] = comLib.pagingOpt.paging.page_size;
+                                            ediJson2.common_header.th_qry_c = ediJson.common_header.ui_option["record_count_per_page"];
+                                            ediJson2.common_header.th_cont_tr_tcd = '3';//처음호출은 0, 이후는 3
+                                            ediJson2.common_header.cont_trkey = grdObj.getAttribute("cont_trkey");
+                                            ediJson2.common_header.guid = "CUI"+comLib.gfn_getSysemDate("yyyyMMddHHmmssSSS")+comLib.shuffleRandom(6);
+                                            ediJson2.common_header.ui_option.process_msg = opt.process_msg;
+                                            ediJson2.common_header.ui_option["out_data"] = opt.out_data+"|append";
+                                            // 기존 submission 호출
+                                            //comLib._executeSubmission(ediJson2);
+                                        }
+                                    }
+                                    
+                                    btn_continue.unbind("onclick");
+                                    btn_continue.bind("onclick", tmpCallBack2);
+                                }
+                            }
+                        }
+                    }
+                }
+            }else if(opt.paging != null && opt.paging.page_type != null && opt.paging.page_type.toUpperCase() =='P') {
+                /* pageList paging */
+                //var pageListObj = this.$p.getComponentById(opt.paging.pagelist_id);
+                //if(this.$p.getComponentById(opt.paging.pagelist_id) == null){
+                //    alert('pageList id : ' +opt.paging.pagelist_id + '가 없습니다. 확인바랍니다.');
+                //}
+                var scwinObj = this.$p.getcomponetById(opt.paging.pagelist_id).scope_obj.getObj('scwin');
+                
+                var nowIndex = pageListObj.getSelectedIndex();
+                if(nowIndex <1){
+                    nowIndex = 1;
+                }
+                ediJson.common_header.ui_option["page_no"] = nowIndex;
+                ediJson.common_header.ui_option["record_count_per_page"] = pageListObj.getPageSize();
+                ediJson.common_header.th_qry_c = ediJson.common_header.ui_option["record_count_per_page"];
+                
+                var tmpCallBack = function(idx) {
+                    var procFuncStr = opt.paging["proc_func"];
+                    var procFuncArr = procFuncStr.split('.');
+                    scwinObj[procFuncArr[1]](idx, 'N');
+                }
+                
+                pageListObj.setPageSize(ediJson.common_header.ui_option["record_count_per_page"]);
+                ediJson.common_header.th_qry_c = ediJson.common_header.ui_option["record_count_per_page"];
+                pageListObj.unbind("onclick");
+                pageListObj.bind("onclick",tmpCallBack);
+            }
+            //ref 설정
+            if (opt.in_data) {
+                var tmp = opt.in_data;
+                tmp = comLib.gfn_replaceAll(tmp, " ","");
+                var arrId1 = tmp.split(",");
+                var tmpArr = [];
+                for (var i=0; arrId1.length>i; i++) {
+                    var arrId2 = arrId1[i].split("=");
+                    if (arrId2.length != 2) {
+                        this._alert("inData ERROR. ["+opt.in_data+"]");
+                        return;
+                    }
+                    var i2 = arrId2[1].indexOf(":");
+                    if(i2 > -1){
+                        alert('|(파이프)를 사용하여 플레그를 정의해야합니다. ');
+                        return false;
+                    }
+                    var arrId3  = arrId2[1].split("|");
+                    var inFlag = comLib._getSbmReadFlag(arrId3[1]);
+                    var dataCollectionObj = null;
+                    //dataCollectionObj = this.$p.getComponentById(arrId3[0]);
+                    var dataCollectionJson;
+                    /*
+                    status : R / statusValue : 0 - 초기 상태. (변화없음)
+                    status : U / statusValue : 0 - 갱신. (update API 호출 시)
+                    status : C / statusValue : 0 - 삽입. (insert API 호출 시)
+                    status : D / statusValue : 0 - 삭제. (delete API 호출 시)
+                    status : V / statusValue : 0 - 삽입 후 삭제. (insert API 후 delete API 호출)
+                    status : E / statusValue : 0 - 제거. (remove API 호출 시)
+                    */
+                    if ( arrId3.length == 2) {
+                        tmpArr.push( {"id":arrId3[0],"key":arrId2[0],"action":inFlag} );
+                        if(inFlag == 'modified') {
+                            dataCollectionJson = dataCollectionObj.getModifiedJSON({saveRemovedData:false});
+                        }else if (inFlag == 'inserted') {
+                            dataCollectionJson = dataCollectionObj.getInsertedJSON();
+                        }else if (inFlag == 'deleted') {
+                            dataCollectionJson = dataCollectionObj.getOnlyDeletedJSON();
+                        }else if (inFlag == 'updated') {
+                            dataCollectionJson = dataCollectionObj.getUpdatedJSON();
+                        }else{
+                            dataCollectioinJson = dataCollectionObj.getAllJSON();
+                        }
+                        if(ediJson.data == null) {
+                            ediJson.data = {};
+                        }
+                        
+                        ediJson.data[arrId2[0]] = dataCollectionJson;
+                    } else {
+                        tmpArr.push( {"id":arrId3[0],"key":arrId2[0]});
+                        
+                        var dataListOrdataMap; // = dataCollectionObj.getObjectType();
+                        if(dataListOrdataMap == 'dataList') {
+                            dataCollectionJson = dataCollectionObj.getAllJSON();
+                            if(ediJson.data == null || Object.keys(ediJson.data).length == 0){
+                                ediJson.data = {};
+                            }
+                            ediJson.data[arrId2[0]] = dataCollectionJson;
+                        }else{
+                            //dataCollectionJson = dataCollectionObj.getJson();
+                            //if(ediJson.data == null || Object.keys(ediJson.data).length == 0) {
+                            //    ediJson.data = JSON.parse(JSON.stringify(dataCollectionJson))
+                            //}else{
+                            //    var ks  = Object.keys(dataCollectionJson);
+                            //    for(var l=0,m=ks.length; l < m; l++){
+                            //        var val = dataCollectionJson[ks[l]];
+                            //        ediJson.data[ks[l]] = val;
+                            //    }
+                            //}
+                        }
+                    }
+                }
+            }
+            
+            //target 설정
+            if ( opt.out_data) {
+                var tmp = opt.out_data;
+                tmp = comLib.gfn_replaceAll(tmp, " ", "")
+                var arrId1 = tmp.split(",");
+                var tmpArr = [];
+                for(var i=0; arrId1.length>i;i++){
+                    var arrId2 = arrId1[i].split("=");
+                    if (arrId2.length != 2) {
+                        this._alert("outData ERROR. ["+opt.outData+"]");
+                        return;
+                    }
+                    var arrId3 = arrId2[1].split("|");
+                    if(arrId3.length == 2){
+                        tmpArr.push({"id":arrId2[0],"key":arrId3[0],"action":arrId3[1]});
+                    } else {
+                        tmpArr.push( {"id":arrId2[0],"key":arrId3[0]} );
+                    }
+                    ediJson.common_header.ui_option.target = {};
+                    ediJson.common_header.ui_option.target[arrId3[0]] = arrId2[0];
+                }
+            }
+            
+            comLib._executeSubmissionJsonp(ediJson);
+            }
         } catch(e) {
             alert("comLib.gfn_executeSubmission() 오류2." + e);
         }
@@ -269,6 +529,116 @@ var comLib = {
         } else if (tmp.length == 7) {
             tmp = '0'+tmp;
         }
+    }
+    
+    comLib.gfn_replaceAll = function(str, orgStr, repStr) {
+        ['스트링의 replaceAll 작업'];
+        str = ""+str;
+        return str.split(orgStr).join(repStr);
+    }
+    /*
+     * m,i,u,d input flag가 들어오면 modified,inserted,updated,deleted 로 변환합니다.
+     */
+    comLib._getSbmReadFlag = function(_flag){
+        ['m,i,u,d input flag가 들어오면 modified,inserted,updated,deleted 로 변환하는 함수'];
+        if(_flag == null) {
+            return '';
+        } else{
+            _flag = _flag.toUpperCase();
+        }
+        
+        if (_flag == 'M') {
+            return "modified";
+        }else if (_flag == 'I') {
+            return "inserted";
+        }else if (_flag == 'D') {
+            return "deleted";
+        }else if (_flag == 'I') {
+            return "updated";
+        }else {
+            return _flag;
+        }
+    }
+    comLib._executeSubmissionJsonp = function(ediJson){
+        var opt = ediJson.common_header.ui_option;
+        var sendData = {};
+        var _server = "default_server";
+        if(opt.action['server'] != null) {
+            _server = opt.action['server'];
+        }
+        var _mode = "asynchronous";
+        if(opt.mode != null){
+            _mode = opt.mode;
+        }
+        
+        var _process_msg = "거래처리중";
+        if(opt.process_msg != null){
+            _process_msg = opt.process_msg;
+        }
+        
+        var url = '';
+        var initFlag = false;
+        var _config = null;
+        if(_server == 'default_server') {
+//         _config = default_config;
+        }else{
+            _config = config;
+        }
+        
+        if(typeof opt.action == 'object' && opt.action['url']==null){
+            //ediJson.common_header.ui_option.action = _config[_server].domain+ _config[_server].url;
+            initFlag = true;
+        }else if(typeof opt.action == 'object' && (ediJson.common_headr.cont_trKey == null || ediJson.common_header.cont_trKey.length == 0 )){
+            //ediJson.common_header.ui_option.action = _config[_server].domain+ opt.action['url'];
+            initFlag = true;
+        }
+        
+        var callbackFunction = ediJson.common_header.ui_option.callback;
+        var errorFunction = ediJson.common_header.ui_option.error;
+        var actionUrl = null;
+        
+//        if(initFlag){
+//            if(_server == 'default_server'){
+//                actionUrl = _config[_server].domain+_config[_server].proxy;
+//            }else{
+//                actionUrl = ediJson.common_header.ui_option.action;
+//            }
+//        }else{
+//            actionUrl = ediJson.common_header.ui_option.action;
+//        }
+
+        var result = JSON.stringify(ediJson);
+        //result = result.replace(/rowStatus/g,'row_status');
+        
+        //actionUrl = actionUrl.replace(/\{tx_id\}/g,ediJson.common_header.th_tr_id);
+        var ajaxOpt = {
+            action : actionUrl,
+            mode:_mode,
+            mediatype:"application/json",
+            method:"get",
+            encoding:"utf-8",
+            processMsg:_process_msg,
+            requestData:result,
+            requestHeader:{},
+            beforeAjax:function(e) {},
+            success:function(e){
+                var result = e.responseJSON;
+                callbackFunction(e);
+            },
+            error:function(e){
+                alert('ajax error!'+e);
+                errorFunction(e);
+            }
+        }
+        
+        if(config.grp_status_class != 'status_local'){
+            ajaxOpt['withCredentials'] = true;
+        }
+        //WebSquare.net.ajax(ajaxOpt);
+    }
+    
+    comLib._executeSubmission = function() {
+        
     }
 // 로그인 기능 구현 후 다시 체크.
 //    comLib.gfn_getUserInfo = function (_key) {
